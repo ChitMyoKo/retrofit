@@ -16,10 +16,7 @@ import retrofit2.Response
 
 class PostDetailsActivity : AppCompatActivity() {
     lateinit var posts : Post
-    var p : Post = Post("id","id","id","id")
-    var pp = mutableListOf<Post>()
     lateinit var postId : String
-  //  private val postDetailAdapter : PostDetailsAdapter by lazy { PostDetailsAdapter(pp) }
     companion object
     {
         const val POST_ID = "postID"
@@ -47,23 +44,18 @@ class PostDetailsActivity : AppCompatActivity() {
         {
             override fun onFailure(call: Call<Post>, t: Throwable) {
                 Log.d("onFailure","unsuccess enqueuq")
+
             }
 
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
                 if(response.isSuccessful)
                 {
                     posts = response.body()!!
-                    Log.d("postCMK",posts.id)
                     if(posts != null) {
                         subtvPostId.text = posts.id
                         subtvUserId.text = posts.userId
                         subtvTitle.text = posts.title
                         subtvBody.text = posts.body
-                        pp.add(posts)
-                       /* rcPostDetails.apply {
-                            adapter = postDetailAdapter
-                            layoutManager = LinearLayoutManager(this@PostDetailsActivity)
-                        }*/
                         Log.d("postId",posts.toString())
                     }
                 }
