@@ -33,27 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onItemClick(post : Post)
     {
-        val apiCallPostDetail = RestAdapter.getClient().create(PostAPI::class.java)
-        val postCall = apiCallPostDetail.getPosts(post.id)
-        postCall.enqueue(object : Callback<List<Post>>
-        {
-            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
-                //
-            }
-
-            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                if(response.isSuccessful)
-                {
-                    val p = response.body()
-                    if(p!= null)
-                    {
-                        posts = p
-                    }
-                }
-            }
-
-        })
-        val intent = PostDetailsActivity.newIntent(this)
+        val intent = PostDetailsActivity.newIntent(this,post.id)
         startActivity(intent)
     }
 

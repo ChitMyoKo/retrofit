@@ -10,5 +10,5 @@ interface PostAPI {
     @GET("/posts")
     fun getAllPosts(): Call<List<Post>>
     @GET("/posts/{id}/")
-    fun getPosts(@Path("id") postId : String) : Call<List<Post>>
+    fun getPosts(@Path("id") postId : String) : Call<Post>
 }

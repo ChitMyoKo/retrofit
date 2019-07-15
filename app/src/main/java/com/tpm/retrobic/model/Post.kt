@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-@Parcelize
 data class Post(
     @SerializedName("id")
     val id : String,
@@ -16,5 +15,5 @@ data class Post(
     val title : String,
     @SerializedName("body")
     val body : String
-): Parcelable{
+): Serializable{
 }
